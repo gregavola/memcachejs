@@ -1,0 +1,107 @@
+<html>
+<head>
+	<title>memcachejs | Expire those localStorage, yo. | Example</title>
+	<script src="memcachejs-min.js"></script>
+
+	<style type="text/css">
+	#results {
+		background: #c1c1c1;
+		padding: 25px;
+		font-size: 18px;
+		display: none;
+	}
+
+	body {
+   		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+   		font-weight: 300;
+	}
+
+	body, ul li {
+		padding: 0;
+		margin: 0;
+	}
+
+	button{
+		display: block;
+	}
+
+	ul li {
+		list-style: none;
+	}
+
+	</style>
+</head>
+<body>
+
+<div id="results"></div>
+
+<ul>
+	<li>
+		<span>Enter text to save:</span>
+		<input type="text" id="value" />
+	</li>
+	<li>
+		<span>Enter time to save (in seconds):</span>
+		<input type="text" id="seconds" />
+	</li>
+
+	<button onclick="save();">Save</button>
+	<button onclick="clearAll();">Clear All Local Storage</button>
+	<button id="get-btn" style="display: none;" onclick="get();">Get The Value</button>
+</ul>	
+
+<script>
+
+function clearAll() {
+	memcachejs.clear();
+	document.getElementById("get-btn").style.display = "none";
+	document.getElementById("results").innerHTML = "All localStorage elements have been cleared";
+	document.getElementById("results").style.display = "block";
+}
+
+function save() {
+
+	document.getElementById("results").style.display = "none";
+
+	// get the seconds and text
+	var seconds = document.getElementById("seconds").value;
+	var text = document.getElementById("value").value;
+
+
+	// little validation on the number
+	var secondsParsed = parseInt(seconds);
+
+	if (secondsParsed) {
+		// magic here, set the key, value, and seconds to expire
+		memcachejs.set("savedValue", text, seconds);
+
+		document.getElementById("results").innerHTML = "Awesome - you have set a LocalStorage value of " + text + " to expire in " + seconds + " seconds";
+
+		document.getElementById("results").style.display = "block";
+		document.getElementById("get-btn").style.display = "block";
+	}
+	else {
+		document.getElementById("results").innerHTML = "The time needs to be a number dude.";
+
+		document.getElementById("results").style.display = "block";
+
+	}	
+	
+}
+
+function get() {
+	// magic here - checks the see if it's there and calls it in the next line
+	if (memcachejs.get("savedValue")) {
+		document.getElementById("results").innerHTML = "The value is: " + memcachejs.get("savedValue");
+	}
+	else {
+		document.getElementById("results").innerHTML = "There is nothing set in this Key.";
+	}
+
+	document.getElementById("results").style.display = "block";
+}
+</script>
+</body>
+
+
+</html>
