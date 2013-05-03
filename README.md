@@ -15,7 +15,7 @@ To save a key/value pair using **memcachejs**, just type the following code:
 memcachejs.set("key", "value", 4000);
 </pre>
 
-The <pre>4000</pre> is the time in **seconds** that you want to the localStoage to be expired.<br />
+The *4000* is the time in **seconds** that you want to the localStoage to be expired.<br />
 
 To retrieve the value again, you can do this:<br />
 
