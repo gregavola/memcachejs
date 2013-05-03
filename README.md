@@ -4,8 +4,7 @@ memcachejs
 A simple way to create expiring localStorage key/value pairs, similar to memcache for other languages
 
 # Requirements
-A browser that that enables localStorage (note the IE browsers do not allow LocalStorage from the file:// protocol, you will need to use this via localhost)<br />
-For more information on browsers that support LocalStorage: <a href="http://caniuse.com/namevalue-storage" target="_blank">http://caniuse.com/namevalue-storage</a><br />
+A browser that that enables localStorage (note the IE browsers do not allow LocalStorage from the file:// protocol, you will need to use this via localhost). For more information on browsers that support LocalStorage: <a href="http://caniuse.com/namevalue-storage" target="_blank">http://caniuse.com/namevalue-storage</a><br />
 
 
 # Getting Started
@@ -29,7 +28,9 @@ else {
 }
 </pre>
 
-That's it! Enjoy using memcachejs to creare expriing localStorage key/values pairs.<br />
+That's it! Enjoy using memcachejs to creare expiring localStorage key/values pairs.<br />
+
+You can also view the example.html for a detailed example on how to use this library.<br />
 
 # Questions
 I'm happy to answer questions you may have about this over Twitter @<a href="http://twitter.com/gregavola">gregavola</a>.
