@@ -1,4 +1,4 @@
-/*! memcachejs - v1.0
+/*!memcachejs - v1.0
  * http://github.com/gregavola/memcachejs
  *
  * Copyright (c) 2013 Greg Avola <gregory.avola@gmail.com>;
